@@ -19,17 +19,74 @@
 </head>
 
 <body>
-  <!-- Start your project here-->
-  <div class="container">
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
-      <div class="text-center">
-        <img src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png" style="width: 250px; height: 90px;" />
-        <h5 class="pt-3">Thank you for using our product. We're glad you're with us.</h5>
-        <p class="pb-5">MDB Team</p>
+<!-- Start your project here-->
+<div class="container mt-5">
+  <div class="d-flex justify-content-center align-items-center" >
+    <div class="text-center">
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text w-25" id="basic-addon1">Book's title</span>
+        <input type="text" id="books-title" class="form-control" placeholder="Book's title">
       </div>
+      <div class="input-group input-group-lg mb-3">
+        <span class="input-group-text w-25">Author's info</span>
+        <input type="text" id="author-name" class="form-control" placeholder="Name">
+        <input type="text" id="author-lastname" class="form-control" placeholder="Last name">
+      </div>
+      <div class="row row-cols-2">
+        <div class="form-floating col">
+          <select class="form-select" id="book-category">
+            <option>Thriller</option>
+            <option>Sci-fi</option>
+            <option>Fantasy</option>
+            <option>Poetry</option>
+            <option>Drama</option>
+            <option>Science</option>
+          </select>
+          <label for="book-category">Select a book category</label>
+        </div>
+        <div class="range col">
+          <label for="priority" class="form-label">Priority</label>
+          <input type="range" id="priority" class="form-range" min="1" max="5" step="1" id="priority">
+        </div>
+      </div>
+      <button type="button" id="add-btn" class="btn btn-outline-success w-50 mt-3 mb-5">Add book to bookshelf</button type="button">
     </div>
   </div>
-  <!-- End your project here-->
+</div>
+<div class="container text-center" style="max-width: 75%">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Book's title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Book category</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody id="table-body">
+    <tr>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>Jacob</td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td>Larry</td>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!-- End your project here-->
 
 </body>
 <!-- Main js file -->
