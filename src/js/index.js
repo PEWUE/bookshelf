@@ -1,6 +1,8 @@
 import * as mdb from "mdb-ui-kit";
+import renderBooks from "./renderBooks";
 
 const addBtn = document.querySelector("#add-btn");
+addBtn.setAttribute("disabled", true);
 
 const tBody = document.querySelector("#table-body");
 
@@ -12,8 +14,8 @@ const priority = document.querySelector("#priority");
 
 const validInputs = document.querySelectorAll("#books-title, #author-name, #author-lastname");
 
-addBtn.setAttribute("disabled", true);
 
+renderBooks();
 
 for (let input of validInputs) {
   input.addEventListener("keyup", () => {
@@ -22,47 +24,33 @@ for (let input of validInputs) {
     } else {
       addBtn.setAttribute("disabled", true);
     }
-  })
+  });
 }
 
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-    let newTr = document.createElement("tr");
-    let tdBookTitle = document.createElement("td");
-    let tdAuthorInfo = document.createElement("td");
-    let tdBookCategory = document.createElement("td");
-    let tdPriority = document.createElement("td");
-    let tdActions = document.createElement("td");
-    tdActions.classList.add("d-flex", "justify-content-around");
+  let newBook = {
+    title: booksTitle.value,
+    authorName: authorName.value,
+    authorLastName: authorLastName.value,
+    category: bookCategory.value,
+    priority: priority.value
+  };
 
-    let spanEdit = document.createElement("span");
-    let editIcon = document.createElement("i");
-    editIcon.classList.add("far", "fa-edit", "text-warning");
-    let spanRemove = document.createElement("span");
-    let removeIcon = document.createElement("i");
-    removeIcon.classList.add("far", "fa-trash-alt", "text-danger");
+  let allBooks;
+  JSON.parse(localStorage.getItem("userBooks")) === null ? allBooks = [] : allBooks = JSON.parse(localStorage.getItem("userBooks"));
 
-    tdBookTitle.innerText = booksTitle.value;
-    tdAuthorInfo.innerText = authorName.value + " " + authorLastName.value;
-    tdBookCategory.innerText = bookCategory.value;
-    tdPriority.innerText = priority.value;
-    spanEdit.appendChild(editIcon);
-    spanRemove.appendChild(removeIcon);
-    tdActions.appendChild(spanEdit);
-    tdActions.appendChild(spanRemove);
+  allBooks.push(newBook);
+  localStorage.setItem("userBooks", JSON.stringify(allBooks));
 
-    newTr.appendChild(tdBookTitle);
-    newTr.appendChild(tdAuthorInfo);
-    newTr.appendChild(tdBookCategory);
-    newTr.appendChild(tdPriority);
-    newTr.appendChild(tdActions);
-    tBody.appendChild(newTr);
+  booksTitle.value = "";
+  authorName.value = "";
+  authorLastName.value = "";
+  addBtn.setAttribute("disabled", true);
 
-    booksTitle.value = "";
-    authorName.value = "";
-    authorLastName.value = "";
-    addBtn.setAttribute("disabled", true);
+  tBody.innerHTML = "";
+  renderBooks();
 
 });
 
