@@ -27,10 +27,12 @@ for (let input of validInputs) {
   });
 }
 
-addBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+addBtn.addEventListener("click", () => {
+
+  let books = JSON.parse(localStorage.getItem("userBooks"));
 
   let newBook = {
+    id: null,
     title: booksTitle.value,
     authorName: authorName.value,
     authorLastName: authorLastName.value,
@@ -38,21 +40,21 @@ addBtn.addEventListener("click", (e) => {
     priority: priority.value
   };
 
-  let allBooks;
-  JSON.parse(localStorage.getItem("userBooks")) === null ? allBooks = [] : allBooks = JSON.parse(localStorage.getItem("userBooks"));
+  books.length === 0 ? newBook.id = 1 : newBook.id = books[books.length - 1].id + 1;
 
-  allBooks.push(newBook);
-  localStorage.setItem("userBooks", JSON.stringify(allBooks));
+  books.push(newBook);
+  localStorage.setItem("userBooks", JSON.stringify(books));
 
   booksTitle.value = "";
   authorName.value = "";
   authorLastName.value = "";
   addBtn.setAttribute("disabled", true);
 
-  tBody.innerHTML = "";
   renderBooks();
 
 });
+
+
 
 export default {
   mdb
