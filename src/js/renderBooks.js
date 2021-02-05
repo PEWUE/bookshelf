@@ -1,4 +1,5 @@
 import allOptionsSelected from "mdb-ui-kit/src/mdb/js/pro/select/util";
+import superToggle from "./superToggle";
 
 export default function renderBooks() {
   let books = JSON.parse(localStorage.getItem("userBooks"));
@@ -18,10 +19,11 @@ export default function renderBooks() {
       let tdBookCategory = document.createElement("td");
       let tdPriority = document.createElement("td");
       tdId.classList.add("d-none");
-      // tdBookTitle.classList.add("editable");
-      // tdAuthorInfo.classList.add("editable");
-      // tdBookCategory.classList.add("editable");
-      // tdPriority.classList.add("editable");
+
+      tdBookTitle.classList.add("editable");
+      tdAuthorInfo.classList.add("editable");
+      tdBookCategory.classList.add("editable");
+      tdPriority.classList.add("editable");
 
       let tdActions = document.createElement("td");
       tdActions.classList.add("d-flex", "justify-content-around");
@@ -65,6 +67,44 @@ export default function renderBooks() {
         localStorage.setItem("userBooks", JSON.stringify(filteredBooks));
 
         renderBooks();
+
+      });
+
+      editButton.addEventListener("click", () => {
+        const bookId = parseInt(editButton.parentElement.parentElement.parentElement.firstChild.innerText);
+        const editableContent = newTr.querySelectorAll(".editable");
+
+
+        superToggle(editButton, "far", "fa-edit", "text-warning", "edit-button", "fas", "fa-check", "text-success", "save-button");
+        [...editableContent].map(el => {
+          el.setAttribute("contentEditable", true);
+          el.focus();
+        });
+
+        const saveButton = newTr.querySelector(".save-button");
+        saveButton != null && saveButton.addEventListener("click", () => {
+
+          // let editedBook = books.filter(book => {
+          //   return book.id === bookId;
+          // })
+
+          books.map(book => {
+            if (book.id === bookId) {
+              const authorName = tdAuthorInfo.innerText.split(" ").slice(0,-1).join(" ");
+              // console.log(authorName);
+              const authorLastName = tdAuthorInfo.innerText.split(" ").pop();
+              // console.log(authorLastName);
+
+              book.title = tdBookTitle.innerText;
+              book.authorName = authorName;
+              book.authorLastName = authorLastName;
+              book.category = tdBookCategory.innerText;
+              book.priority = tdPriority.innerText;
+            }
+          })
+          localStorage.setItem("userBooks", JSON.stringify(books));
+          renderBooks();
+        })
 
       })
 
