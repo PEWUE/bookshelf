@@ -84,16 +84,10 @@ export default function renderBooks() {
         const saveButton = newTr.querySelector(".save-button");
         saveButton != null && saveButton.addEventListener("click", () => {
 
-          // let editedBook = books.filter(book => {
-          //   return book.id === bookId;
-          // })
-
           books.map(book => {
             if (book.id === bookId) {
               const authorName = tdAuthorInfo.innerText.split(" ").slice(0,-1).join(" ");
-              // console.log(authorName);
               const authorLastName = tdAuthorInfo.innerText.split(" ").pop();
-              // console.log(authorLastName);
 
               book.title = tdBookTitle.innerText;
               book.authorName = authorName;
