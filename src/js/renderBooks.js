@@ -1,10 +1,13 @@
 import allOptionsSelected from "mdb-ui-kit/src/mdb/js/pro/select/util";
 
 export default function renderBooks() {
-  const tBody = document.querySelector("#table-body");
-  tBody.innerHTML = "";
-
   let books = JSON.parse(localStorage.getItem("userBooks"));
+  const tBody = document.querySelector("#table-body");
+  const bookCounter = document.querySelector("#counter");
+
+  tBody.innerHTML = "";
+  bookCounter.innerText = `Books in your bookshelf: ${books.length}`;
+
 
   if (books !== null) {
     for (let book of books) {

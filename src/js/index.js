@@ -4,7 +4,7 @@ import renderBooks from "./renderBooks";
 const addBtn = document.querySelector("#add-btn");
 addBtn.setAttribute("disabled", true);
 
-const tBody = document.querySelector("#table-body");
+// const tBody = document.querySelector("#table-body");
 
 const booksTitle = document.querySelector("#books-title");
 const authorName = document.querySelector("#author-name");
