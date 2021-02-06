@@ -1,5 +1,5 @@
 import * as mdb from "mdb-ui-kit";
-import renderBooks from "./renderBooks";
+import render from "./render";
 
 const addBtn = document.querySelector("#add-btn");
 addBtn.setAttribute("disabled", true);
@@ -14,7 +14,7 @@ const priority = document.querySelector("#priority");
 const validInputs = document.querySelectorAll("#books-title, #author-name, #author-lastname");
 
 
-renderBooks();
+render();
 
 for (let input of validInputs) {
   input.addEventListener("keyup", () => {
@@ -35,7 +35,9 @@ addBtn.addEventListener("click", () => {
     title: booksTitle.value,
     authorName: authorName.value,
     authorLastName: authorLastName.value,
-    category: bookCategory.value,
+    category: bookCategory.value.split(" ")
+      .slice(0, -1)
+      .join(" "),
     priority: priority.value
   };
 
@@ -49,7 +51,7 @@ addBtn.addEventListener("click", () => {
   authorLastName.value = "";
   addBtn.setAttribute("disabled", true);
 
-  renderBooks();
+  render();
 
 });
 

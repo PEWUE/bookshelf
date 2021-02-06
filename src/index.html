@@ -21,7 +21,7 @@
 <body>
 <!-- Start your project here-->
 <div class="container mt-5">
-  <div class="d-flex justify-content-center align-items-center" >
+  <div class="d-flex justify-content-center align-items-center">
     <div class="text-center">
       <div class="input-group input-group-lg mb-3">
         <span class="input-group-text w-25" id="basic-addon1">Book's title</span>
@@ -35,12 +35,7 @@
       <div class="row row-cols-2">
         <div class="form-floating col">
           <select class="form-select" id="book-category">
-            <option>Thriller</option>
-            <option>Sci-fi</option>
-            <option>Fantasy</option>
-            <option>Poetry</option>
-            <option>Drama</option>
-            <option>Science</option>
+            <!--       categories        -->
           </select>
           <label for="book-category">Select a book category</label>
         </div>
@@ -49,12 +44,15 @@
           <input type="range" id="priority" class="form-range" min="1" max="5" step="1" id="priority">
         </div>
       </div>
-      <button type="button" id="add-btn" class="btn btn-outline-success w-50 mt-3 mb-5">Add book to bookshelf</button type="button">
+      <button type="button" id="add-btn" class="btn btn-outline-success w-50 mt-3 mb-5">Add book to bookshelf
+      </button>
     </div>
   </div>
 </div>
 <div class="container text-center" style="max-width: 75%">
-  <p class="mb-4 d-flex align-items-start font-weight-bold" id="counter" style="font-size: 1.5rem">TESTOOWO PL</p>
+  <h1 class="d-flex align-items-start font-weight-bold" id="counter" style="font-size: 1.5rem">
+    <!-- counter -->
+  </h1>
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -66,7 +64,7 @@
     </tr>
     </thead>
     <tbody id="table-body">
-<!--      books here    -->
+    <!--      books here    -->
     </tbody>
   </table>
 </div>

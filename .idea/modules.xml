@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../CodersLab/WAR_SFE_S_186_ScrumLab/.idea/WAR_SFE_S_186_ScrumLab.iml" filepath="$PROJECT_DIR$/../CodersLab/WAR_SFE_S_186_ScrumLab/.idea/WAR_SFE_S_186_ScrumLab.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mdb-webpack-starter-master.iml" filepath="$PROJECT_DIR$/.idea/mdb-webpack-starter-master.iml" />
     </modules>
   </component>
